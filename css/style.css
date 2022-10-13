@@ -1,0 +1,151 @@
+/* Step 1: keyframes */
+#logo {
+    width: 475px;
+    position: relative;
+    animation-name: logo;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+}
+@keyframes logo {
+    from {width: 25px;
+            opacity: 0;}
+    to {width: 475px;
+            opacity: 1;} 
+}
+
+/* Step 2: font and background */
+body {
+    font-family: 'Poppins', 'serif';
+    background: url(../images/concrete_seamless.png), #f1f1f1;
+}
+
+/* Step 3/4: modifying header and nav for flex */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav_links {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Step 5: nav links color after visited */
+.nav_links a:visited {
+    color: #0000ff;
+}
+
+/* Step 6: card->header direct children style */
+.card > header {
+    background-color: #288088;
+    border: 2px solid #45ADAD;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+.card {
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+
+    /* Step 7: flex */
+    flex-basis: 450px;
+}
+/* Step 8: adjusting pricing with flex */
+.pricing {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+/* Step 9: styling images in gallery */
+/* FIX ME: border-box or content-box??? */
+.gallery img {
+    width: 300px;
+    border: 10px solid #50C7C7;
+    margin: 10px 10px 10px 10px;
+}
+
+/* Step 10: styling gallery to flex like the images */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Style for displays over 900 px */
+@media screen and (min-width: 900px) {
+    /* Step 11: header and nav links at opposite sides of screen */
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .nav_links {
+        flex-direction: row;
+    }
+
+    /* Step 12: changing width of cards, but the heights are different */
+    .card {
+        flex-basis: 275px;
+    }
+    .pricing {
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    /* Step 13: header stays fixed */
+    body > header {
+        position: sticky;
+        top: 0;
+    }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+    #logo {
+        width: 475px;
+        position: relative;
+        animation: none;
+    }
+}
+
+@media print {
+    body {
+        /* Step 15: change font */
+        font-family: 'Arial', 'Helvetica';
+        /* Step 16: remove background image */
+        background-image: none; 
+    }
+
+    /* Step 17: Adjusting nav_links to look like the picture */
+    nav {
+        width: 100%;
+    }
+    .nav_links {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    /* Step 18: making the bottoms of all the pricing elements align*/
+    .pricing {
+        flex-wrap: nowrap;
+        align-items: flex-end;
+    }
+
+    /* Step 19: card border */
+    .card {
+        border: 2px solid #45ADDD;
+        flex-basis: 325px;
+    }
+
+    /* Step 20: Gallery should not be visible */
+    #gallery, .gallery {
+        display: none;
+    }
+
+    .pricing ul li:nth-child(2n)::after {
+        content: "\01F44D";
+    }
+}
